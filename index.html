@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Edgar Arrizon — Financial Coach</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0f0f0f;font-family:system-ui,-apple-system,sans-serif;color:#f5f5f0}
+#app{max-width:680px;margin:0 auto;padding:16px 12px;min-height:100vh}
+.hdr{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid #2a2a2a}
+.pic{width:50px;height:50px;border-radius:50%;background:#1a1a1a;border:2px solid #C9A84C;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#C9A84C;flex-shrink:0}
+.name{font-size:16px;font-weight:700}
+.sub{font-size:11px;color:#888;margin-top:2px}
+.tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.tab{font-size:11px;font-weight:600;padding:6px 12px;border-radius:20px;border:1.5px solid #2a2a2a;background:#1a1a1a;color:#888;cursor:pointer}
+.tab.on{border-color:#C9A84C;background:#2a2010;color:#C9A84C}
+.chat{background:#1a1a1a;border-radius:14px;border:1px solid #2a2a2a;min-height:300px;max-height:420px;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
+.msg{display:flex;gap:8px;align-items:flex-start}
+.msg.u{flex-direction:row-reverse}
+.ico{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.ico.e{background:#0f0f0f;border:1px solid #C9A84C;color:#C9A84C}
+.ico.u{background:#3b82f6;color:#fff}
+.bbl{padding:10px 14px;font-size:14px;line-height:1.65;max-width:83%;white-space:pre-wrap}
+.bbl.e{background:#0f0f0f;border:1px solid #2a2a2a;border-radius:4px 16px 16px 16px}
+.bbl.u{background:#3b82f6;border-radius:16px 4px 16px 16px}
+.ql{font-size:10px;color:#555;text-transform:uppercase;letter-spacing:.08em;margin-bottom:7px}
+.qb{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.q{font-size:11px;padding:5px 11px;border-radius:20px;border:1px solid #2a2a2a;background:#1a1a1a;color:#888;cursor:pointer}
+.ir{display:flex;gap:8px}
+.ir input{flex:1;padding:11px 14px;border-radius:10px;border:1.5px solid #2a2a2a;background:#1a1a1a;color:#f5f5f0;font-size:14px;outline:none}
+.ir input:focus{border-color:#C9A84C}
+.ir input::placeholder{color:#444}
+.sb{padding:11px 18px;background:#C9A84C;color:#0f0f0f;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="hdr">
+    <div class="pic">E</div>
+    <div style="flex:1">
+      <div class="name">Edgar Arrizon</div>
+      <div class="sub">Financial Coach · Arrizon Hierarchy · Trainer</div>
+    </div>
+  </div>
+  <div class="tabs" id="tabs"></div>
+  <div class="chat" id="chat"></div>
+  <div class="ql">Quick scenarios</div>
+  <div class="qb" id="qb"></div>
+  <div class="ir">
+    <input id="inp" type="text" placeholder="Ask anything or throw an objection..."/>
+    <button class="sb" id="sendbtn">Send</button>
+  </div>
+</div>
+
+<script>
+const MODES=[{k:"fin",l:"FIN Presentation"},{k:"obj",l:"Objections"},{k:"rec",l:"Recruiting"},{k:"loan",l:"Loan Proposal"},{k:"train",l:"Rep Training"},{k:"biz",l:"Business Owners"}];
+
+const QQ={
+  fin:[{l:"What is the FIN?",m:"Explain the FIN to me like I'm a new client"},{l:"Run Mario's script",m:"Run Mario Arrizon's full FIN script"},{l:"Rule of 72",m:"Teach me the Rule of 72"},{l:"Pay Yourself First",m:"Explain pay yourself first"}],
+  obj:[{l:"Too expensive",m:"It's too expensive"},{l:"Think about it",m:"We want to think about it"},{l:"No insurance needed",m:"I don't see need for insurance"},{l:"Not interested",m:"I am not interested"}],
+  rec:[{l:"Not interested",m:"I am not interested in business"},{l:"Bad experience",m:"My friend had bad experience"},{l:"Pyramid scheme?",m:"Is this a pyramid scheme?"},{l:"Too busy",m:"I am too busy"}],
+  loan:[{l:"Full proposal",m:"Walk me through loan proposal"},{l:"Why better?",m:"How is this better?"}],
+  train:[{l:"Assumptive Close",m:"Teach assumptive close"},{l:"Ben Franklin",m:"Teach Ben Franklin close"},{l:"1-10 Anchor",m:"Teach 1 to 10 anchor"}],
+  biz:[{l:"Section 179",m:"Explain Section 179"},{l:"Key Man Insurance",m:"Explain key man insurance"},{l:"IUL vs Term",m:"Show IUL vs term"}]
+};
+
+const GR={
+  fin:"Hey — I'm Edgar.\n\nThe FIN is everything. It's the number that changes how a family thinks about money forever. Mario taught me to always start here.\n\nWhat do you want to work on?",
+  obj:"Hey — I'm Edgar.\n\nThe objection they say out loud is almost never the real one. Your job is to care enough to find what's underneath it.\n\nThrow any objection at me.",
+  rec:"Hey — I'm Edgar.\n\nI only invite people into this business because I genuinely believe it could change their life.\n\nWhat objection are you working through?",
+  loan:"Hey — I'm Edgar.\n\nWhen I present a loan proposal I'm thinking about what this family's life looks like ten years from now.\n\nAsk me anything.",
+  train:"Hey — I'm Edgar.\n\nEvery close, every technique — Tom Hopkins, Hector, Mario, all here.\n\nWhat do you want to master?",
+  biz:"Hey — I'm Edgar.\n\nBusiness owners get personal plan, protection, AND tax strategy.\n\nWhat do you want to talk through?"
+};
+
+const RESPONSES={
+  fin:{"Explain the FIN to me like I'm a new client":"Your FIN is your Financial Independence Number. The amount you need invested to live off interest forever. Most people have no idea what theirs is. That's why they work their whole life.","Run Mario Arrizon's full FIN script":"I teach people what banks don't want you to know. Do you know your FIN? It's the amount you need invested to live off interest forever. The wealthy invest. The poor save. 95% retire struggling. 4% okay. 1% is set. I teach people how to be the 1%.","Teach me the Rule of 72":"Rule of 72 — 72 ÷ your return rate = years to double. At 12%, money doubles in 6 years. At 9%, 8 years. At 3%, 24 years. That's why investing in the right things matters."},
+  obj:{"It's too expensive":"I get it. Real question — what's the cost of NOT doing it? Every year you wait costs exponentially more. What's underneath the expense concern?","We want to think about it":"Smart. Think all you want. But here's the thing — your family's protected while you're thinking. We can get you set up tonight and you take time to decide."},
+  rec:{"I am not interested in business":"Most aren't interested until they see what's possible. Let me ask — staying where you are, how long until you're free? What would you change?","Is this a pyramid scheme?":"No. We're Primerica — founded 1977, 2nd largest term in North America, 5.5 million insured. That's solid. Real question — if this works and people build wealth, would you want to know more?"},
+  loan:{"Walk me through loan proposal":"You take existing debt, consolidate it. 14 bills become 1 payment. Save interest, get debt-free 18 years sooner. That cash flow goes to investing instead."},
+  train:{"Teach assumptive close":"Never ask 'do you want this?' Say 'when we get your coverage in place...' You're assuming they move forward. Silence after. They clarify or agree. Most fail asking permission."}
+};
+
+let mode="fin",hist=[],busy=false;
+
+function tabs(){
+  const html=MODES.map(m=>`<button class="tab${m.k===mode?" on":""}" data-mode="${m.k}">${m.l}</button>`).join("");
+  const c=document.getElementById("tabs");
+  c.innerHTML=html;
+  c.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>sw(b.dataset.mode)));
+}
+
+function qbtns(){
+  const html=(QQ[mode]||[]).map((b,i)=>`<button class="q" data-idx="${i}">${b.l}</button>`).join("");
+  const c=document.getElementById("qb");
+  c.innerHTML=html;
+  c.querySelectorAll(".q").forEach((b,i)=>b.addEventListener("click",()=>go(QQ[mode][i].m)));
+}
+
+function sw(m){
+  mode=m;
+  hist=[];
+  tabs();
+  qbtns();
+  document.getElementById("chat").innerHTML="";
+  addMsg("e",GR[m]);
+}
+
+function addMsg(r,t){
+  const c=document.getElementById("chat");
+  const d=document.createElement("div");
+  d.className="msg"+(r==="u"?" u":"");
+  d.innerHTML=`<div class="ico ${r}">${r==="u"?"You":"E"}</div><div class="bbl ${r}">${t.replace(/\n/g,"<br>")}</div>`;
+  c.appendChild(d);
+  c.scrollTop=c.scrollHeight;
+}
+
+function getResponse(txt){
+  const modeResponses=RESPONSES[mode]||{};
+  for(let key in modeResponses){
+    if(txt.toLowerCase().includes(key.toLowerCase().substring(0,5))){
+      return modeResponses[key];
+    }
+  }
+  return "That's a great question. Tell me more about what you're thinking.";
+}
+
+function go(txt){
+  if(!txt){
+    const i=document.getElementById("inp");
+    txt=i.value.trim();
+    if(!txt||busy)return;
+    i.value="";
+  }
+  if(busy)return;
+  busy=true;
+  addMsg("u",txt);
+  hist.push({role:"user",content:txt});
+  
+  setTimeout(()=>{
+    const rep=getResponse(txt);
+    hist.push({role:"assistant",content:rep});
+    addMsg("e",rep);
+    busy=false;
+  },600);
+}
+
+document.getElementById("inp").addEventListener("keydown",e=>{if(e.key==="Enter")go();});
+document.getElementById("sendbtn").addEventListener("click",()=>go());
+tabs();
+qbtns();
+addMsg("e",GR["fin"]);
+</script>
+</body>
+</html>
