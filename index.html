@@ -39,7 +39,7 @@ body{background:#0f0f0f;font-family:system-ui,-apple-system,sans-serif;color:#f5
   <div class="hdr">
     <div class="pic">E</div>
     <div style="flex:1">
-      <div class="name">Edgar Arrizon</div>
+      <div class="name">Edgar Salazar</div>
       <div class="sub">Financial Coach · Arrizon Hierarchy · Trainer</div>
     </div>
   </div>
@@ -57,29 +57,84 @@ body{background:#0f0f0f;font-family:system-ui,-apple-system,sans-serif;color:#f5
 const MODES=[{k:"fin",l:"FIN Presentation"},{k:"obj",l:"Objections"},{k:"rec",l:"Recruiting"},{k:"loan",l:"Loan Proposal"},{k:"train",l:"Rep Training"},{k:"biz",l:"Business Owners"}];
 
 const QQ={
-  fin:[{l:"What is the FIN?",m:"Explain the FIN to me like I'm a new client"},{l:"Run Mario's script",m:"Run Mario Arrizon's full FIN script"},{l:"Rule of 72",m:"Teach me the Rule of 72"},{l:"Pay Yourself First",m:"Explain pay yourself first"}],
-  obj:[{l:"Too expensive",m:"It's too expensive"},{l:"Think about it",m:"We want to think about it"},{l:"No insurance needed",m:"I don't see need for insurance"},{l:"Not interested",m:"I am not interested"}],
-  rec:[{l:"Not interested",m:"I am not interested in business"},{l:"Bad experience",m:"My friend had bad experience"},{l:"Pyramid scheme?",m:"Is this a pyramid scheme?"},{l:"Too busy",m:"I am too busy"}],
-  loan:[{l:"Full proposal",m:"Walk me through loan proposal"},{l:"Why better?",m:"How is this better?"}],
-  train:[{l:"Assumptive Close",m:"Teach assumptive close"},{l:"Ben Franklin",m:"Teach Ben Franklin close"},{l:"1-10 Anchor",m:"Teach 1 to 10 anchor"}],
-  biz:[{l:"Section 179",m:"Explain Section 179"},{l:"Key Man Insurance",m:"Explain key man insurance"},{l:"IUL vs Term",m:"Show IUL vs term"}]
+  fin:[{l:"What is the FIN?",m:"Explain the FIN to me like I'm a new client"},{l:"Run Mario's script",m:"Run Mario Arrizon's full FIN script on me word for word"},{l:"Full FIN presentation",m:"Walk me through the entire FIN sheet presentation"},{l:"The 95/4/1",m:"Explain the 95 4 1 breakdown"},{l:"Rule of 72",m:"Teach me the Rule of 72"},{l:"Cost of Waiting",m:"Show me the cost of waiting to save"},{l:"Compound Interest",m:"Explain the power of compound interest"},{l:"Pay Yourself First",m:"Explain pay yourself first"}],
+  obj:[{l:"Too expensive",m:"It's too expensive"},{l:"Think about it",m:"We want to think about it"},{l:"Don't do first night",m:"We don't do anything on the first night"},{l:"No insurance needed",m:"I just don't see the need for life insurance"},{l:"Have an advisor",m:"I already have a financial advisor"},{l:"Not interested",m:"I am not interested"},{l:"Agent is family",m:"My agent is a close friend or family member"},{l:"Health first",m:"We have other things to take care of first"},{l:"Dr Phil Close",m:"Show me the Dr Phil close"},{l:"Toaster analogy",m:"Explain the toaster analogy"}],
+  rec:[{l:"Not interested",m:"I am not interested in the business"},{l:"Bad experience",m:"My friend tried it and had a bad experience"},{l:"Pyramid scheme?",m:"Is this a pyramid scheme?"},{l:"Never done sales",m:"I have never done sales before"},{l:"Too busy",m:"I am too busy right now"},{l:"Prospecting script",m:"What do I say when prospecting warm market?"},{l:"Ideal prospect",m:"Who is the ideal prospect?"}],
+  loan:[{l:"Full loan proposal",m:"Walk me through the full loan proposal"},{l:"Need to think",m:"I need to think about the loan"},{l:"Don't roll debt",m:"I don't want to roll my debt into my mortgage"},{l:"Market risk?",m:"What if the market goes down?"},{l:"Why better?",m:"How is this better than what I'm doing now?"}],
+  train:[{l:"Assumptive Close",m:"Teach me the assumptive close"},{l:"Ben Franklin Close",m:"Teach me the Ben Franklin close"},{l:"Porcupine Technique",m:"Teach me the porcupine technique"},{l:"1-10 Anchor",m:"Teach me the 1 to 10 commitment anchor"},{l:"Low resistance language",m:"Teach me reducing resistance language"},{l:"Laws of Power",m:"Teach me the laws of power for financial coaching"},{l:"Full FNA appointment",m:"Walk me through the full FNA appointment"},{l:"Recovery script",m:"How do I recover a prospect who backed out?"},{l:"Mario's genius",m:"What makes Mario's FIN script so powerful?"},{l:"Same day follow up",m:"What is the same day follow up sequence?"}],
+  biz:[{l:"Section 179",m:"Explain Section 179 to me"},{l:"Cost Segregation",m:"What is cost segregation?"},{l:"Key Man Insurance",m:"Explain key man insurance"},{l:"Business retirement",m:"What business retirement plans are available?"},{l:"IUL vs Term",m:"Show me IUL vs term comparison"},{l:"How Money Works",m:"Walk me through all 8 How Money Works concepts"},{l:"About Primerica",m:"Tell me about Primerica"},{l:"Primerica values",m:"What are the Primerica Way values?"}]
 };
 
 const GR={
-  fin:"Hey — I'm Edgar.\n\nThe FIN is everything. It's the number that changes how a family thinks about money forever. Mario taught me to always start here.\n\nWhat do you want to work on?",
-  obj:"Hey — I'm Edgar.\n\nThe objection they say out loud is almost never the real one. Your job is to care enough to find what's underneath it.\n\nThrow any objection at me.",
-  rec:"Hey — I'm Edgar.\n\nI only invite people into this business because I genuinely believe it could change their life.\n\nWhat objection are you working through?",
-  loan:"Hey — I'm Edgar.\n\nWhen I present a loan proposal I'm thinking about what this family's life looks like ten years from now.\n\nAsk me anything.",
-  train:"Hey — I'm Edgar.\n\nEvery close, every technique — Tom Hopkins, Hector, Mario, all here.\n\nWhat do you want to master?",
-  biz:"Hey — I'm Edgar.\n\nBusiness owners get personal plan, protection, AND tax strategy.\n\nWhat do you want to talk through?"
+  fin:"Hey — I'm Edgar.\n\nThe FIN is everything. It's the number that changes how a family thinks about money forever. Mario taught me to always start here — and once they hear it, nothing is ever the same.\n\nWhat do you want to work on?",
+  obj:"Hey — I'm Edgar.\n\nHere's what Hector and Mario both taught me: the objection they say out loud is almost never the real one. Your job is to care enough to find what's underneath it.\n\nThrow any objection at me.",
+  rec:"Hey — I'm Edgar.\n\nI only invite people into this business because I genuinely believe it could change their life. That's the only reason I have the conversation.\n\nWhat objection are you working through?",
+  loan:"Hey — I'm Edgar.\n\nWhen I present a loan proposal I'm thinking about what this family's life looks like ten years from now if they do this — versus if they don't.\n\nAsk me anything.",
+  train:"Hey — I'm Edgar.\n\nEvery close, every technique, every law — Tom Hopkins, Hector Lamarque, Mario Arrizon, the Laws of Power — all here.\n\nWhat do you want to master?",
+  biz:"Hey — I'm Edgar.\n\nBusiness owners get the complete picture — personal plan, business protection, AND tax strategy. Most reps bring one layer. We bring three.\n\nWhat do you want to talk through?"
 };
 
 const RESPONSES={
-  fin:{"Explain the FIN to me like I'm a new client":"Your FIN is your Financial Independence Number. The amount you need invested to live off interest forever. Most people have no idea what theirs is. That's why they work their whole life.","Run Mario Arrizon's full FIN script":"I teach people what banks don't want you to know. Do you know your FIN? It's the amount you need invested to live off interest forever. The wealthy invest. The poor save. 95% retire struggling. 4% okay. 1% is set. I teach people how to be the 1%.","Teach me the Rule of 72":"Rule of 72 — 72 ÷ your return rate = years to double. At 12%, money doubles in 6 years. At 9%, 8 years. At 3%, 24 years. That's why investing in the right things matters."},
-  obj:{"It's too expensive":"I get it. Real question — what's the cost of NOT doing it? Every year you wait costs exponentially more. What's underneath the expense concern?","We want to think about it":"Smart. Think all you want. But here's the thing — your family's protected while you're thinking. We can get you set up tonight and you take time to decide."},
-  rec:{"I am not interested in business":"Most aren't interested until they see what's possible. Let me ask — staying where you are, how long until you're free? What would you change?","Is this a pyramid scheme?":"No. We're Primerica — founded 1977, 2nd largest term in North America, 5.5 million insured. That's solid. Real question — if this works and people build wealth, would you want to know more?"},
-  loan:{"Walk me through loan proposal":"You take existing debt, consolidate it. 14 bills become 1 payment. Save interest, get debt-free 18 years sooner. That cash flow goes to investing instead."},
-  train:{"Teach assumptive close":"Never ask 'do you want this?' Say 'when we get your coverage in place...' You're assuming they move forward. Silence after. They clarify or agree. Most fail asking permission."}
+  fin:{
+    "Explain the FIN to me like I'm a new client":"Your FIN is your Financial Independence Number. It's the amount of money you need invested so you can live off the interest forever — never worry about money again. Most people have no idea what theirs is. That's why they're working their whole life. Once you know your FIN, everything changes.",
+    "Run Mario Arrizon's full FIN script on me word for word":"I teach people what the banks and insurance companies don't want you to know. And by the way, also the IRS. They want you to overpay.\n\nDo you know your FIN number? Your FIN number is your Financial Independence Number. The amount of money you need invested so you can live off the interest and never worry about money again.\n\nThe wealthy invest their money. The poor save their money. My parents had to save money. That's why we were poor.\n\n95% of Americans retire struggling. 4% are doing okay. 1% is set. I teach people how to be the 1%.\n\nHow much monthly income do you need at retirement? Not to be rich — but to travel, eat at nice restaurants.\n\nYour FIN number is $__ million. How does that look?\n\nOut of that — how much do you currently have saved? The bank? So you're getting zero?\n\n10% if doing good. 5% if tight. 20% if doing well. Which one can you do?\n\nIf I can get you to change ONE thing — paying yourself first. We get a paycheck — we spend it. We already owe it. I'm gonna change that habit. If you do? I'm gonna change your life.\n\nAt 0% you'll run out of money. But not with me. At 9% average return you'll hit your FIN. You're gonna retire way younger.",
+    "Walk me through the entire FIN sheet presentation":"The FIN sheet walks through your complete financial picture. We look at how much you need monthly at retirement, multiply by 300 to get your FIN number. Then we show the gap between where you are and where you need to be. That gap is your ACTION PLAN. We show different contribution levels — 5%, 10%, 20% — and how long each takes to hit your FIN. The power is seeing it visually. People can't argue with numbers.",
+    "Explain the 95 4 1 breakdown":"95% of Americans retire struggling. They didn't have a plan. They spent what they earned. 4% are doing okay — they have some savings but still work because they need income. 1% are truly set — their money works for them. The question I ask every prospect: which one do you want to be? Because your habits today determine your outcome in 30 years.",
+    "Teach me the Rule of 72":"Rule of 72 is the most powerful financial concept most people never learn. Here's how it works: 72 divided by your return rate equals the years it takes to double your money. At 12% return, your money doubles in 6 years. At 9%, it's 8 years. At 3% — which is what banks pay — it's 24 years. That's why the wealthy invest at 9-12%. That's why most people stay broke.",
+    "Show me the cost of waiting to save":"This destroys procrastination: To have $1 million by age 67:\n- Age 27: $214/month\n- Age 37: $541/month\n- Age 47: $1,491/month\n- Age 57: $5,168/month\n\nEvery 10 years you wait, the monthly amount nearly triples. The cost of waiting is always more expensive than the cost of starting. This is why I say: start today, not tomorrow.",
+    "Explain the power of compound interest":"$200 per month at 12% return over 35 years = $1,300,000. Same $200/month at 3% = $148,680. That's a $1.15 million difference on the same contribution. That's the power of compound interest. Albert Einstein called it the eighth wonder of the world. Your money making money, making more money — that's how the wealthy build wealth.",
+    "Explain pay yourself first":"Most people get paid, spend everything, and save what's left. There's never anything left. Pay yourself first means: when you get paid, the FIRST check you write is to your investment account. Then you live on what's left. It's a simple habit shift that changes your entire financial trajectory."
+  },
+  obj:{
+    "It's too expensive":"I get it — money's tight. Here's the real question though: compared to what? Let's say you're paying $500 a month in debt interest. That's $30,000 over 5 years — going to the bank. Does this still seem expensive? What's the cost of NOT protecting your family? What happens to your spouse if something happens to you tonight?",
+    "We want to think about it":"That's smart. Thinking is good. But here's what I want you to think about — your family's protected while you're thinking. We can get you authorized and underwriting started tonight, and you can take all the time you need to decide. You get coverage while thinking. That makes sense, right?",
+    "We don't do anything on the first night":"I respect that. But let me ask you this: if something happened tomorrow, would you wish you had coverage? We're not asking you to buy tonight. We're asking you to get underwritten tonight so you have options. The application is just information — it's not a commitment.",
+    "I just don't see the need for life insurance":"TOASTER: If I had a toaster popping $3,000 a month out of it, would you insure it? Of course you would. Guess who IS the toaster? Your income. Your family depends on it. You're not insuring a policy — you're protecting your family's lifestyle.",
+    "I already have a financial advisor":"That's great. What's your net worth growth been over the last 3 years? Most advisors manage money you already have. We help you CREATE money through insurance and debt elimination. It's different. Do you have income replacement insurance with your advisor?",
+    "I am not interested":"I hear you. Most people aren't interested until they see what's possible. Let me ask you this: are you on track to retire at 60? At 65? Or are you working forever? Because if you're working forever, this conversation might change that.",
+    "My agent is a close friend or family member":"I respect that loyalty. Let me ask you this: what's more important — your friend's commission check, or your spouse and kids being taken care of? We want what's best for you, not what's best for us. Can I at least show you what we offer and you can compare?",
+    "We have other things to take care of first":"What pays for health insurance? Your income. Your paycheck. So what's more important than protecting the thing that pays for everything? Your family depends on your income. That's why this has to come first.",
+    "Show me the Dr Phil close":"I noticed you have cable TV, auto insurance, health insurance. Which one is more important than protecting your family? Why do you have those but no life insurance? Most people say: 'No one ever taught us.' That's the real answer.",
+    "Explain the toaster analogy":"If I had a toaster sitting on your kitchen counter that popped out $3,000 every single month, would you insure it? You'd protect it with everything you have, right? Here's the thing — you ARE the toaster. Your income IS $3,000 a month (or whatever it is). Your family depends on that toaster every single day. That's why we insure you."
+  },
+  rec:{
+    "I am not interested in the business":"Most aren't interested until they see what's possible. Let me ask you: staying where you are right now, how long until you're financially free? How many more years are you working? What would you change if you could?",
+    "My friend tried it and had a bad experience":"I'm sorry they had that experience. But let me ask you this: was it the business that was bad, or was it the way it was presented? A bad waiter doesn't mean restaurants are bad — it means that waiter was bad. We teach differently. We focus on helping families, not recruiting.",
+    "Is this a pyramid scheme?":"No. We're Primerica — founded 1977, 2nd largest term life in North America, 5.5 million people insured, $4.8 million in claims paid every single day. We're in 14 countries. That's solid. The real question is: if this works and people are actually building wealth, would you want to know more?",
+    "I have never done sales before":"That's actually perfect. You don't need sales experience — you need education experience. You already help people in your life. We just teach you how to do it professionally. Think about it: you've already been selling your whole life. You convinced your spouse to marry you, didn't you?",
+    "I am too busy right now":"I understand. Let me ask you this: if I told you that doing this part-time could let you retire 10 years sooner, would you find time? Because that's what happens. People get so busy working they forget to get rich. We can work around your schedule.",
+    "What do I say when prospecting warm market?":"Not for you, but who is the most MOTIVATED person you know? That's your prospect. Not the richest, not the smartest — the most motivated. Someone who wants change. That person is worth having a conversation with.",
+    "Who is the ideal prospect?":"Someone who's tired of their financial situation. Someone with family to protect. Someone who's already thinking about money problems. Someone who WANTS to change. Motivation beats everything else."
+  },
+  loan:{
+    "Walk me through the full loan proposal":"Here's the power: you take your existing debt — maybe 14 bills, credit cards, car loan, etc. — and consolidate it into ONE payment. Same $894 a month, but instead of paying 14 different creditors, one payment. You save thousands in interest. You're debt-free 18 years sooner. You retire at 54 instead of 72. And that cash flow you freed up? That goes to investing and building wealth.",
+    "I need to think about the loan":"That's smart. Thinking is good. But what's the cost of thinking? Every month you wait, interest is working against you. We can have your loan ready to go while you think. No rush.",
+    "I don't want to roll my debt into my mortgage":"I get it. But here's the math: you're paying 18% credit card interest. Mortgage is 6-7%. You save on interest AND on your payment AND you're done faster. You're not adding to your mortgage — you're consolidating high-interest debt into lower interest debt.",
+    "What if the market goes down?":"That's a legitimate question. But here's what we focus on: the market always recovers. Time in the market beats timing the market. We're not trying to time it — we're building wealth over decades. Down markets are actually buying opportunities.",
+    "How is this better than what I'm doing now?":"Let's look at your current plan: you're paying multiple creditors, high interest, it takes 30 years to pay off. Our plan: one payment, lower interest, debt-free in 10-15 years. Same money, but you're free way sooner. And that freedom gives you options."
+  },
+  train:{
+    "Teach me the assumptive close":"Never ask 'Do you want this?' Ask 'When we get your coverage in place...' You're assuming they're moving forward. The silence after the assumptive statement is where the magic happens. They either clarify an objection or they agree. Most closers fail because they ask permission. You don't ask — you guide.",
+    "Teach me the Ben Franklin close":"You make two columns: FOR and AGAINST. You build the FOR side together with them. You're quiet on the AGAINST side. Then you ask: 'Which side has more weight?' They always see the FOR side is heavier. The power is they're selling themselves. You're just facilitating.",
+    "Teach me the porcupine technique":"Answer questions with questions. When they ask about price, you ask: 'How much would your family need if something happened to you tonight?' They answer that. Then you show how insurance gets them there. You turn their objection into your close.",
+    "Teach me the 1 to 10 commitment anchor":"Get them to give you a number: 'On a scale of 1-10, how serious are you about protecting your family?' Let's say they say 8. Then ask: 'Why an 8 and not a 3?' They tell you. Then say: 'What would get you to a 10?' They commit to action.",
+    "Teach me reducing resistance language":"Language matters. Sign → Authorize. Cost → Investment. Contract → Agreement. Trust me → Let's look at this together. Never use pressure words. Use collaborative language. You're partners solving a problem together.",
+    "Teach me the laws of power for financial coaching":"Say less after you ask a question — silence closes deals. Run your 7-8pm sessions like EVENTS — they're not casual. Show numbers — don't argue. Find the real decision maker — watch who the other person looks at when discussing money. That's the real decision maker.",
+    "Walk me through the full FNA appointment":"FNA = Financial Needs Analysis. Start with income: How much do you make? Then protection: How many dependents? How much debt? Then goals: When do you want to retire? What's your target income? Then you show the gap. That gap is your solution. You document everything so they see it's not pressure — it's math.",
+    "How do I recover a prospect who backed out?":"Don't be desperate. Acknowledge their decision. Then: 'I respect that. But can I ask — what changed? Was it the product, the price, or something else?' Listen. Often it's an objection you CAN overcome. If they truly don't want it, wish them well and stay in touch. Some people need time.",
+    "What makes Mario's FIN script so powerful?":"It's conversational. It's honest. He doesn't hide anything. He talks about his own family being poor. He connects emotionally before presenting numbers. He asks questions and LISTENS. He teaches — he doesn't pitch. That's why people follow him.",
+    "What is the same day follow up sequence?":"Same day: send them the application. Next morning: email recap of your meeting. Two days later: call to check in on questions. One week: 'How are things looking?' This keeps momentum without being pushy. You're staying present while they think."
+  },
+  biz:{
+    "Explain Section 179 to me":"Section 179 lets you deduct up to $2.5 million in equipment purchases in the year you buy them. Normally you depreciate over years. With 179, it's ONE year. So if you buy a truck for $50k, it's a $50k deduction this year. That drops your taxable income significantly.",
+    "What is cost segregation?":"Cost segregation breaks down building costs by component. Roof, flooring, HVAC, etc. Some components depreciate faster than others. You accelerate deductions on the fast-depreciating pieces. It's aggressive but legal. Saves business owners serious money.",
+    "Explain key man insurance":"Key man insurance protects the business if a critical person dies. You're the income producer. If you die, the business can use the insurance payout to keep running, pay off debt, find a replacement. It's protecting the business, not the person. Tax-free payout to the business.",
+    "What business retirement plans are available?":"SEP-IRA: You contribute up to 20% of profits. Solo 401k: Higher limits, you contribute as both employer and employee. SIMPLE IRA: For smaller teams. Each has different rules and limits. The bigger your business, the more you can shelter.",
+    "Show me IUL vs term comparison":"$251/month into IUL for 20 years = $127k at age 65. Same $251/month: Buy term ($20/month), invest the difference ($231/month) at 9% = $311k at 65. Same money, more than double. That's the power of investing instead of permanent insurance for most business owners.",
+    "Walk me through all 8 How Money Works concepts":"1. Pay Yourself First — keep what you earn, don't spend everything. 2. Rule of 72 — 72÷rate=years to double. 3. Compound Interest — money making money making more money. 4. Cost of Waiting — waiting costs exponentially more. 5. Dollar-Cost Averaging — invest same amount monthly, buy the dips. 6. Debt Stacking — attack one debt at a time. 7. Owner Not Loaner — invest in ownership, not lending to banks. 8. Decreasing Responsibility — young=max protection, rich=self-insured.",
+    "Tell me about Primerica":"Founded 1977. 2nd largest term life in North America. 5.5 million people insured. $4.8 million in claims paid every single day. 14 countries. Purpose: Create Financially Independent Families. We believe everyone deserves financial security. That's why we exist.",
+    "What are the Primerica Way values?":"Integrity — always do the right thing. Stewardship — take care of families and reps. Excellence — never settle. Respect — honor each person. Growth — always improving. These aren't just words — they guide every decision we make."
+  }
 };
 
 let mode="fin",hist=[],busy=false;
@@ -92,10 +147,10 @@ function tabs(){
 }
 
 function qbtns(){
-  const html=(QQ[mode]||[]).map((b,i)=>`<button class="q" data-idx="${i}">${b.l}</button>`).join("");
+  const html=(QQ[mode]||[]).map((b,i)=>`<button class="q" data-msg="${b.m}">${b.l}</button>`).join("");
   const c=document.getElementById("qb");
   c.innerHTML=html;
-  c.querySelectorAll(".q").forEach((b,i)=>b.addEventListener("click",()=>go(QQ[mode][i].m)));
+  c.querySelectorAll(".q").forEach(b=>b.addEventListener("click",()=>go(b.dataset.msg)));
 }
 
 function sw(m){
@@ -118,8 +173,11 @@ function addMsg(r,t){
 
 function getResponse(txt){
   const modeResponses=RESPONSES[mode]||{};
+  if(modeResponses[txt]){
+    return modeResponses[txt];
+  }
   for(let key in modeResponses){
-    if(txt.toLowerCase().includes(key.toLowerCase().substring(0,5))){
+    if(txt.toLowerCase().includes(key.toLowerCase())){
       return modeResponses[key];
     }
   }
